@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: |
@@ -24,6 +24,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add details.html
-          git commit -m "Update GitInspector report"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
           git push
