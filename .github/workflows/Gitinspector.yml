@@ -24,8 +24,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name "jebuAsus"
-          git config --global user.email "95964955+Carbrex@users.noreply.github.com"
+          git config --global user.name "ActionsBot"
+          git config --global user.email "actions@github.com"
           git add details.html
           git commit -m "Update GitInspector report"
           git push
