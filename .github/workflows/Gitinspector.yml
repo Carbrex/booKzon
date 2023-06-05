@@ -1,0 +1,31 @@
+name: GitInspector
+
+on:
+  push:
+    branches:
+      - main  # Change this to the appropriate branch name if needed
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gitinspector
+
+      - name: Run GitInspector and generate HTML report
+        run: |
+          gitinspector --format=html > details.html
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+          git add details.html
+          git commit -m "Update GitInspector report"
+          git push
